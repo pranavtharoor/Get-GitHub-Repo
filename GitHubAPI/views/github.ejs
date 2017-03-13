@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Github repos</title>
+	<!-- <link rel="stylesheet" type="text/css" href="../public/css/styles.css" /> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+<body>
+	<input type="text" id="user" name="user" value="pranavtharoor" />
+	<button id="submit">Submit</button>
+	<div id="repos">
+		<table>
+		</table>
+	</div>
+</body>
+<script>
+$('#submit').click(() => {
+	$.ajax({
+    	url:'/github/' + $('#user').val(),
+   		type: 'get',
+   		success: (data) => {
+   			$('#repos table').text('');
+   			for(x in data) {
+    			$('#repos table').append('<tr><td>' + data[x].type + '</td><td><button class="' + data[x].type + '" onclick="sendurl(\'' + data[x].url + '\', \'' + data[x].type + '\')">' + data[x].name + '</button></td></tr>');
+    		}
+		}
+    });
+});
+function sendurl(url1, type1) {
+	var body = {
+		urla: url1,
+		type: type1
+	}
+	console.log(body);
+	$.ajax({
+    	url:'/github/type',
+    	data: body,
+    	// dataType: 'json',
+    	// contentType: 'application/json',
+   		type: 'post',
+   		success: (data) => {
+   			$('#repos table').text('');
+   			if(type1 == 'file') {			/*add || 1 == 1 for file*/
+   				$('#repos table').append(data);
+   			} else {
+	   			for(x in data) {
+	    			$('#repos table').append('<tr><td>' + data[x].type + '</td><td><button class="' + data[x].type + '" onclick="sendurl(\'' + data[x].url + '\', \'' + data[x].type + '\')">' + data[x].name + '</button></td></tr>');
+	    		}
+	    	}
+		}
+    });
+}
+</script>
+</html>
