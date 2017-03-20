@@ -40,8 +40,8 @@ function sendurl(url1, type1) {
    		type: 'post',
    		success: (data) => {
    			$('#repos table').text('');
-   			if(type1 == 'file') {			/*add || 1 == 1 for file*/
-   				$('#repos table').append(data);
+   			if(type1 == 'file' || 1 == 1) {			/*add || 1 == 1 for file*/
+   				$('#repos table').append('<xmp>' + data + '</xmp>');
    			} else {
 	   			for(x in data) {
 	    			$('#repos table').append('<tr><td>' + data[x].type + '</td><td><button class="' + data[x].type + '" onclick="sendurl(\'' + data[x].url + '\', \'' + data[x].type + '\')">' + data[x].name + '</button></td></tr>');

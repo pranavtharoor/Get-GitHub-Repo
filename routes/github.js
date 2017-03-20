@@ -37,9 +37,10 @@ router.post('/type', (req, res) => {
   var type = req.body.type;
 
 
-  urla = 'https://api.github.com/repos/pranavtharoor/CPP';  //remove
-  type = 'repo';                                            //remove
-
+  // urla = 'https://api.github.com/repos/pranavtharoor/CPP';  //remove
+  // type = 'repo';
+  urla = 'https://api.github.com/repos/pranavtharoor/Java/contents/SlidePuzzle.java?ref=master';
+  type = 'file';
 
   if(type == 'repo')
     urla = urla + '/contents';
