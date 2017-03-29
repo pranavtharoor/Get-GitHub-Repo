@@ -40,7 +40,7 @@ body {
 
 /*Styles for file listing - Start*/
 #repos {
-	margin: 60px 0 80px;
+	margin: 40px 0 10px;
 }
 
 #file-list {
@@ -53,10 +53,14 @@ body {
 .show-code {
 	padding: 30px 0 0 30px;
 	overflow-x: scroll;
+	/*overflow-y: scroll;*/
+	/*height: calc(100vh - 160px);*/
+	box-sizing: border-box;
 }
 
 .show-files {
-	padding: 30px;
+	box-sizing: border-box;
+	padding: 30px 5px;
 }
 
 .icon {
@@ -75,3 +79,68 @@ body {
 	margin-bottom: 50px;
 }
 /*Styles for file listing - End*/
+
+/*Media Quries - Start*/
+
+@media screen and (max-width: 950px) {
+
+	#file-list {
+		width: 100%;
+		border-radius: 0;
+	}
+
+}
+
+@media screen and (max-width: 800px) {
+
+	.list-item {
+		width: calc(100% / 4);
+	}
+
+}
+
+@media screen and (max-width: 650px) {
+
+	.list-item {
+		width: calc(100% / 3);
+	}
+
+}
+
+@media screen and (max-width: 450px) {
+
+	.list-item {
+		width: calc(100% / 2);
+	}
+
+	#user, #submit {
+		margin: 5px;
+	}
+
+	#repos {
+		margin: 20px;
+	}
+
+	#user, #submit {
+		margin: 25px 0;
+	}
+
+	.input-details {
+		margin: 10px;
+	}
+
+}
+
+@media screen and (max-width: 370px) {
+
+	#user{
+		width: 65%;
+	}
+
+	.list-item {
+		width: 100%;
+	}
+
+}	
+
+/*Media Quries - End*/
