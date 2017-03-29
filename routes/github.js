@@ -50,7 +50,6 @@ router.get('/type/:urla/:type', (req, res) => {
 
         if(type == 'file') {
           var buf = new Buffer(JSON.parse(body).content, 'base64').toString('ascii');
-          console.log(buf);
           res.send(buf);
         } else {
             var response = [];
