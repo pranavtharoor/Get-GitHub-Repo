@@ -33,14 +33,11 @@ function sendurl(url1, type1) {
 	}
 	console.log(body);
 	$.ajax({
-    	url:'/github/type',
-    	data: body,
-    	// dataType: 'json',
-    	// contentType: 'application/json',
-   		type: 'post',
+    	url:'/github/type/' + encodeURIComponent(url1) + '/' + type1,
+   		type: 'get',
    		success: (data) => {
    			$('#repos table').text('');
-   			if(type1 == 'file' || 1 == 1) {			/*add || 1 == 1 for file*/
+   			if(type1 == 'file') {
    				$('#repos table').append('<xmp>' + data + '</xmp>');
    			} else {
 	   			for(x in data) {
