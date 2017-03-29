@@ -4,7 +4,7 @@ const express = require('express');
 const router = express.Router()
 
 router.get('/', (req, res) => {
-	res.render('github');
+	res.sendfile('public/github.html');
 });
 
 router.get('/:user', (req, res) => {
@@ -30,18 +30,9 @@ router.get('/:user', (req, res) => {
 	});
 });
 
-router.post('/type', (req, res) => {
-  console.log(req);
-  console.log(req.body);
-  var urla = req.body.urla;
-  var type = req.body.type;
-
-
-  // urla = 'https://api.github.com/repos/pranavtharoor/CPP';  //remove
-  // type = 'repo';
-  urla = 'https://api.github.com/repos/pranavtharoor/Java/contents/SlidePuzzle.java?ref=master';
-  type = 'file';
-
+router.get('/type/:urla/:type', (req, res) => {
+  var urla = req.params.urla;
+  var type = req.params.type;
   if(type == 'repo')
     urla = urla + '/contents';
 

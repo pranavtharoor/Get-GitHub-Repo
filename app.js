@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const github = require('./routes/github');
 
 const app = express();
-app.set('view engine', 'ejs');
+app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.json());
 app.use('/github', github);
 
