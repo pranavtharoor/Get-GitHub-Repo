@@ -1,3 +1,77 @@
 body {
 	background: lavender;
+	margin: 0;
+	font-family: sans-serif;
 }
+
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-start;
+}
+
+/*Styles for input and submit - Start*/
+.input-details {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-top: 50px;
+}
+
+#user, #submit {
+	padding: 10px;
+	margin: 5px 20px;
+	font-size: 20px;
+}
+
+#user {
+	border : none;
+	border-radius: 4px;
+}
+
+#submit {
+	background: #111;
+	color: #EEE;
+	border: none;
+	outline: none;
+	border-radius: 4px;	
+}
+/*Styles for iput and submit - End*/
+
+/*Styles for file listing - Start*/
+#repos {
+	margin: 60px 0 80px;
+}
+
+#file-list {
+	border-radius: 5px;
+	background: white;
+	margin: 0 auto;
+	width: 80%;
+}
+
+.show-code {
+	padding: 30px 0 0 30px;
+	overflow-x: scroll;
+}
+
+.show-files {
+	padding: 30px;
+}
+
+.icon {
+	height: 60px;
+	width: 60px;
+}
+
+.list-name {
+	text-align: center;
+	padding: 10px;
+}
+
+.list-item {
+	text-align: center;
+	width: calc(100% / 5);
+	margin-bottom: 50px;
+}
+/*Styles for file listing - End*/

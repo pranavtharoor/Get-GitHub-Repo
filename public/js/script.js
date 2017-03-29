@@ -3,9 +3,10 @@ $('#submit').click(() => {
     	url:'/github/' + $('#user').val(),
    		type: 'get',
    		success: (data) => {
-   			$('#repos table').text('');
+   			$('#repos #file-list').text('');
+        $('#file-list').addClass('show-files');
    			for(x in data) {
-    			$('#repos table').append('<tr><td>' + data[x].type + '</td><td><button class="' + data[x].type + '" onclick="sendurl(\'' + data[x].url + '\', \'' + data[x].type + '\')">' + data[x].name + '</button></td></tr>');
+    			$('#repos #file-list').append('<div class="list-item"><button class="' + data[x].type + ' icon" onclick="sendurl(\'' + data[x].url + '\', \'' + data[x].type + '\')"></button><div class="list-name">' + data[x].name + '</div></div>');
     		}
 		}
     });
@@ -15,12 +16,20 @@ function sendurl(url1, type1) {
     	url:'/github/type/' + encodeURIComponent(url1) + '/' + type1,
    		type: 'get',
    		success: (data) => {
-   			$('#repos table').text('');
+   			$('#repos #file-list').text('');
    			if(type1 == 'file') {
-   				$('#repos table').append('<xmp>' + data + '</xmp>');
+          if($('#file-list').hasClass('show-files'))
+            $('#file-list').removeClass('show-files');
+          if(!($('#file-list').hasClass('show-code')))
+            $('#file-list').addClass('show-code');
+   				$('#repos #file-list').append('<xmp>' + data + '</xmp>');
    			} else {
-	   			for(x in data) {
-	    			$('#repos table').append('<tr><td>' + data[x].type + '</td><td><button class="' + data[x].type + '" onclick="sendurl(\'' + data[x].url + '\', \'' + data[x].type + '\')">' + data[x].name + '</button></td></tr>');
+          if(!($('#file-list').hasClass('show-files')))
+            $('#file-list').addClass('show-files');
+          if($('#file-list').hasClass('show-code'))
+            $('#file-list').removeClass('show-code');
+          for(x in data) {
+            $('#repos #file-list').append('<div class="list-item"><button class="' + data[x].type + ' icon" onclick="sendurl(\'' + data[x].url + '\', \'' + data[x].type + '\')"></button><div class="list-name">' + data[x].name + '</div></div>');
 	    		}
 	    	}
 		}
