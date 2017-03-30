@@ -4,7 +4,10 @@ $('#submit').click(() => {
    		type: 'get',
    		success: (data) => {
    			$('#repos #file-list').text('');
-        $('#file-list').addClass('show-files');
+        if(!($('#file-list').hasClass('show-files')))
+          $('#file-list').addClass('show-files');
+        if($('#file-list').hasClass('show-code'))
+          $('#file-list').removeClass('show-code');
    			for(x in data) {
     			$('#repos #file-list').append('<div class="list-item"><button class="' + data[x].type + ' icon" onclick="sendurl(\'' + data[x].url + '\', \'' + data[x].type + '\')"></button><div class="list-name">' + data[x].name + '</div></div>');
     		}

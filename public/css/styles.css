@@ -64,8 +64,27 @@ body {
 }
 
 .icon {
-	height: 60px;
-	width: 60px;
+	height: 110px;
+	width: 110px;
+	outline: none;
+	cursor: pointer;
+	background-size: contain;
+	background-position: center;
+	background-color: transparent;
+	background-repeat: no-repeat;
+	border: none;
+}
+
+.repo, .dir {
+	background-image: url('../icons/folderclosed.png');
+}
+
+.repo:hover, .dir:hover {
+	background-image: url('../icons/folderopen.png');
+}
+
+.file {
+	background-image: url('../icons/file.png');
 }
 
 .list-name {
