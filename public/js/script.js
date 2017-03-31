@@ -1,8 +1,15 @@
 var pwd = '', user = '', pwt = '';
 
 $('#submit').click(() => {
-  user = $('#user').val()
+  user = $('#user').val();
   getrepos();
+  $('#user').blur();
+});
+
+$('#input-form').submit(function(e){
+  e.preventDefault();
+  user = $('#user').val()
+  getrepos()
 });
 
 function getrepos() {
@@ -54,7 +61,7 @@ $('.folder-up').click(() => {
     pwd = pwd.split("/");
   var length = pwd.length;
   }
-  if(pwd[length - 2] == 'contents') {
+  if(pwd[length - 2] == 'contents' && pwt != 'file') {
     getrepos();
     pwd = pwd.join("/");
   } else if(pwt == 'file'){
